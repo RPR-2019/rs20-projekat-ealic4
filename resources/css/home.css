@@ -1,0 +1,6 @@
+#grid{
+    -fx-background-color: white;
+}
+#btnDoctor,#btnManager,#btnMedical,#cancel{
+    -fx-background-color: #00aafc;
+}
