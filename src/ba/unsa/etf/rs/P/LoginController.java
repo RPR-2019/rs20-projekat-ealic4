@@ -1,4 +1,4 @@
-package ba.unsa.etf.rs.Classes;
+package ba.unsa.etf.rs.P;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
