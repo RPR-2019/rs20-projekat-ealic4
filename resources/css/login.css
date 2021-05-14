@@ -1,0 +1,21 @@
+#passField,#textFiled{
+    -fx-font-weight: bold;
+
+}
+#username,#password,#label{
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+}
+#img{
+    -fx-background-image: url("/img/image.jpg");
+
+
+
+}
+#buttonOk,#cancel{
+    -fx-background-color: #00aafc;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+
+}

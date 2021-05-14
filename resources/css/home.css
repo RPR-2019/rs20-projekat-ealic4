@@ -3,4 +3,8 @@
 }
 #btnDoctor,#btnManager,#btnMedical,#cancel{
     -fx-background-color: #00aafc;
+    -fx-text-fill: white;
+}
+#login{
+    -fx-background-image: url("img/pozadina_new.png");
 }

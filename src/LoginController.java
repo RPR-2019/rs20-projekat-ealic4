@@ -21,6 +21,7 @@ public class LoginController {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/doctorLogin.fxml"));
             stageLogDoctor.setTitle("Login doctor");
             stageLogDoctor.setScene(new Scene(root,USE_COMPUTED_SIZE,USE_COMPUTED_SIZE));
+            stageLogDoctor.setResizable(false);
             stageLogDoctor.show();
 
     }
@@ -30,6 +31,7 @@ public class LoginController {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/medicalLogin.fxml"));
         stageLogDoctor.setTitle("Login doctor");
         stageLogDoctor.setScene(new Scene(root,USE_COMPUTED_SIZE,USE_COMPUTED_SIZE));
+        stageLogDoctor.setResizable(false);
         stageLogDoctor.show();
     }
 
@@ -38,6 +40,7 @@ public class LoginController {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/managerLogin.fxml"));
         stageLogDoctor.setTitle("Login doctor");
         stageLogDoctor.setScene(new Scene(root,USE_COMPUTED_SIZE,USE_COMPUTED_SIZE));
+        stageLogDoctor.setResizable(false);
         stageLogDoctor.show();
     }
 
