@@ -1,6 +1,7 @@
 #passField,#textFiled{
     -fx-font-weight: bold;
 
+
 }
 #username,#password,#label{
     -fx-font-weight: bold;
@@ -10,12 +11,16 @@
 #img{
     -fx-background-image: url("/img/image.jpg");
 
-
-
 }
 #buttonOk,#cancel{
     -fx-background-color: #00aafc;
     -fx-text-fill: white;
     -fx-font-weight: bold;
 
+}
+.ispravno{
+    -fx-background-color: #00aafc;
+}
+.nijeIspravno{
+    -fx-background-color: ffb6c1;
 }

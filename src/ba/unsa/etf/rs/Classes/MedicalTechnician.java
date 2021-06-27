@@ -1,4 +1,6 @@
 package ba.unsa.etf.rs.Classes;
 
-public class MedicalTechnician extends Employee{
+import ba.unsa.etf.rs.Classes.Employee;
+
+public class MedicalTechnician extends Employee {
 }

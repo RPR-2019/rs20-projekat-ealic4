@@ -1,0 +1,13 @@
+#gridDoctor,#gridDoctor2{
+    -fx-background-image: url("/img/image.jpg");
+}
+#label{
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+}
+#submit{
+    -fx-background-color: #00aafc;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}

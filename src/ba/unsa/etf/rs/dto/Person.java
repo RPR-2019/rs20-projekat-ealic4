@@ -1,4 +1,4 @@
-package ba.unsa.etf.rs.Classes;
+package ba.unsa.etf.rs.dto;
 
 import javafx.scene.control.DateCell;
 

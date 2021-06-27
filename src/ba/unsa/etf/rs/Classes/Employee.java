@@ -1,4 +1,6 @@
 package ba.unsa.etf.rs.Classes;
 
-public class Employee extends Person{
+import ba.unsa.etf.rs.dto.Person;
+
+public class Employee extends Person {
 }

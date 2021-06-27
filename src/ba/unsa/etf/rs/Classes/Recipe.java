@@ -1,4 +1,6 @@
 package ba.unsa.etf.rs.Classes;
 
-public class Recipe extends Drug{
+import ba.unsa.etf.rs.Classes.Drug;
+
+public class Recipe extends Drug {
 }
