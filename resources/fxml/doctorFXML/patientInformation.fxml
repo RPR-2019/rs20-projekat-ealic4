@@ -36,18 +36,18 @@
         <children>
             <Label text="Name:" GridPane.rowIndex="1" />
             <Label text="Surname:" GridPane.rowIndex="2" />
-            <DatePicker fx:id="dateOfBirth" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="namePatient" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="surnamePatient" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="dateOfBirth" editable="false" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="namePatient" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="surnamePatient" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Date of birth:" GridPane.rowIndex="3" />
             <Label text="Umbg:" GridPane.rowIndex="4" />
-            <TextField fx:id="umbgPatient" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="umbgPatient" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="Address:" GridPane.rowIndex="5" />
-            <TextField fx:id="addressPatient" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="addressPatient" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Email:" GridPane.rowIndex="6" />
             <Label text="Phone number:" GridPane.rowIndex="7" />
-            <TextField fx:id="emailPatient" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField fx:id="phoneNumberPatient" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="emailPatient" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="phoneNumberPatient" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          <Label text="Patient information:">
             <font>
                <Font name="System Bold" size="12.0" />

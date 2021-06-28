@@ -1,17 +1,42 @@
 package ba.unsa.etf.rs.Controllers;
 
+import ba.unsa.etf.rs.beans.Patient;
+import ba.unsa.etf.rs.dao.ClinicDAO;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 import java.time.LocalDate;
 
 public class PatientController {
+    ClinicDAO clinicDAO = new ClinicDAO();
+    public String enterUmbg;
     public PatientController(){}
+    public PatientController(String enterUmbg){
+        this.enterUmbg = enterUmbg;
+    }
 
+    Patient patient = null;
     public TextField namePatient,surnamePatient,umbgPatient,addressPatient,emailPatient,phoneNumberPatient;
     public DatePicker dateOfBirth;
     public void initialize(){
 
+
+        for(Patient p: clinicDAO.getPatients()){
+            if(p.getUmbg().equals(enterUmbg)){ patient = p; break;}
+        }
+
+
+        namePatient.setText(patient.getName());
+        surnamePatient.setText(patient.getSurname());
+        dateOfBirth.setValue(patient.getDateOfBirth());
+        umbgPatient.setText(patient.getUmbg());
+        addressPatient.setText(patient.getAddress());
+        emailPatient.setText(patient.getEmail());
+        phoneNumberPatient.setText(patient.getPhoneNumber());
+
+
+
+//enter patient
         namePatient.textProperty().addListener((obs,stara,nova)->{
             if(namePatient.getText().isEmpty()){
                 namePatient.getStyleClass().removeAll("ispravno");
