@@ -60,7 +60,7 @@
     </GridPane>
    <ButtonBar GridPane.columnSpan="3" GridPane.rowIndex="2">
       <buttons>
-         <Button cancelButton="true" mnemonicParsing="false" text="End examination" />
+         <Button fx:id="endButton" cancelButton="true" mnemonicParsing="false" text="End examination" onAction="#end"/>
       </buttons>
    </ButtonBar>
    <GridPane GridPane.columnIndex="1">
