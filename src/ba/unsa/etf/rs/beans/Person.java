@@ -1,27 +1,35 @@
-package ba.unsa.etf.rs.dto;
+package ba.unsa.etf.rs.beans;
 
 import javafx.scene.control.DateCell;
 
+import java.time.LocalDate;
+
 public class Person {
+    private int id;
    private String name;
    private String surname;
-   private DateCell dateOfBirth;
-   private String jmbg;
+   private LocalDate dateOfBirth;
+   private String umbg;
    private String address;
    private String email;
    private String phoneNumber;
 
     public Person() {}
 
-    public Person(String name, String surname, DateCell dateOfBirth, String jmbg, String address, String email, String phoneNumber) {
+    public Person(String name, String surname, LocalDate dateOfBirth, String umbg, String address, String email, String phoneNumber) {
+        this.id = 1;
         this.name = name;
         this.surname = surname;
         this.dateOfBirth = dateOfBirth;
-        this.jmbg = jmbg;
+        this.umbg = umbg;
         this.address = address;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
+
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
 
     public String getName() {
         return name;
@@ -39,21 +47,13 @@ public class Person {
         this.surname = surname;
     }
 
-    public DateCell getDateOfBirth() {
-        return dateOfBirth;
-    }
+    public LocalDate getDateOfBirth() { return dateOfBirth; }
 
-    public void setDateOfBirth(DateCell dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+    public void setDateOfBirth(LocalDate dateOfBirth) { this.dateOfBirth = dateOfBirth; }
 
-    public String getJmbg() {
-        return jmbg;
-    }
+    public String getUmbg() { return umbg; }
 
-    public void setJmbg(String jmbg) {
-        this.jmbg = jmbg;
-    }
+    public void setUmbg(String umbg) { this.umbg = umbg; }
 
     public String getAddress() {
         return address;

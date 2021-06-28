@@ -1,0 +1,6 @@
+.ispravno{
+    -fx-background-color: #00aafc;
+}
+.nijeIspravno{
+    -fx-background-color: #ffb6c1;
+}

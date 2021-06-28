@@ -1,6 +1,8 @@
-package ba.unsa.etf.rs.Classes;
+package ba.unsa.etf.rs;
 
 import ba.unsa.etf.rs.Controllers.ClinicController;
+import ba.unsa.etf.rs.beans.Doctor;
+import ba.unsa.etf.rs.dao.ClinicDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +16,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        ClinicDAO clinicDAO = new ClinicDAO();
+        for(Doctor d : clinicDAO.getDoctors()){
+            System.out.println(d.getName());
+        }
+
+
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
         ClinicController loginController = new ClinicController();
         loader.setController(loginController);
@@ -32,6 +41,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+
 
         launch(args);
     }
