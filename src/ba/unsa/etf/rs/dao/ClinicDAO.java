@@ -194,8 +194,10 @@ public class ClinicDAO {
 
 
 
-    public void addDoctor() throws SQLException {
-        for(Doctor d: doctors) {
+    public void addDoctor(Doctor d)  {
+
+        try {
+            inDoctor= connection.prepareStatement("INSERT INTO doctor(id,name,surname,date_of_birth,umbg,address,email,phone_number,salary,username,password)values (?,?,?,?,?,?,?,?,?,?,?);");
             inDoctor.setInt(1, 1);
             inDoctor.setString(2, d.getName());
             inDoctor.setString(3, d.getSurname());
@@ -209,7 +211,12 @@ public class ClinicDAO {
             inDoctor.setString(11,d.getPassword());
 
             inDoctor.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
+
+
+
 
     }
     public void addPatient(Patient p) {

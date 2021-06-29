@@ -1,10 +1,177 @@
 package ba.unsa.etf.rs.Controllers;
 
-public class AddDoctorController {
-    public void ok(){
+import ba.unsa.etf.rs.beans.Doctor;
+import ba.unsa.etf.rs.beans.Patient;
+import ba.unsa.etf.rs.dao.ClinicDAO;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.time.LocalDate;
+
+public class AddDoctorController {
+    ClinicDAO clinicDAO = new ClinicDAO();
+    public TextField nameDoctor,surnameDoctor,umbgDoctor,addressDoctor,emailDoctor,phoneNumberDoctor,salary,username,password;
+    public DatePicker dateOfBirth;
+    boolean name,surname,date,address,email,phone,umbg;
+    public void initialize(){
+   nameDoctor.textProperty().addListener((obs,stara,nova)->{
+        if(nameDoctor.getText().isEmpty()){
+            nameDoctor.getStyleClass().removeAll("ispravno");
+            nameDoctor.getStyleClass().add("nijeIspravno");
+            name = false;
+        }else{
+            nameDoctor.getStyleClass().removeAll("nijeIspravno");
+            nameDoctor.getStyleClass().add("ispravno");
+            name = true;
+
+        }
+    });
+
+        surnameDoctor.textProperty().addListener((obs,stara,nova)->{
+        if(surnameDoctor.getText().isEmpty()){
+            surnameDoctor.getStyleClass().removeAll("ispravno");
+            surnameDoctor.getStyleClass().add("nijeIspravno");
+            surname = false;
+        }else{
+            surnameDoctor.getStyleClass().removeAll("nijeIspravno");
+            surnameDoctor.getStyleClass().add("ispravno");
+            surname = true;
+
+        }
+    });
+
+        dateOfBirth.valueProperty().addListener((obs,stara,nova)->{
+        if(dateOfBirth.getValue().isAfter(LocalDate.now())){
+            dateOfBirth.getEditor().getStyleClass().removeAll("ispravno");
+            dateOfBirth.getEditor().getStyleClass().add("nijeIspravno");
+            date = false;
+        }else{
+            dateOfBirth.getEditor().getStyleClass().removeAll("nijeIspravno");
+            dateOfBirth.getEditor().getStyleClass().add("ispravno");
+            date = true;
+        }
+    });
+
+        addressDoctor.textProperty().addListener((obs,stara,nova)->{
+        if(addressDoctor.getText().isEmpty()){
+            addressDoctor.getStyleClass().removeAll("ispravno");
+            addressDoctor.getStyleClass().add("nijeIspravno");
+            address = false;
+        }else{
+            addressDoctor.getStyleClass().removeAll("nijeIspravno");
+            addressDoctor.getStyleClass().add("ispravno");
+            address = true;
+
+        }
+    });
+
+        emailDoctor.textProperty().addListener((obs,stara,nova)->{
+        if(!validationEmail(emailDoctor.getText())){
+            emailDoctor.getStyleClass().removeAll("ispravno");
+            emailDoctor.getStyleClass().add("nijeIspravno");
+            email = false;
+        }else{
+            emailDoctor.getStyleClass().removeAll("nijeIspravno");
+            emailDoctor.getStyleClass().add("ispravno");
+            email = true;
+
+        }
+    });
+
+        phoneNumberDoctor.textProperty().addListener((obs,stara,nova)->{
+        if(!validationPhone(phoneNumberDoctor.getText())){
+            phoneNumberDoctor.getStyleClass().removeAll("ispravno");
+            phoneNumberDoctor.getStyleClass().add("nijeIspravno");
+            phone = false;
+        }else{
+            phoneNumberDoctor.getStyleClass().removeAll("nijeIspravno");
+            phoneNumberDoctor.getStyleClass().add("ispravno");
+            phone = true;
+        }
+    });
+
+
+        umbgDoctor.textProperty().addListener((obs,stara,nova)-> {
+        String novi = umbgDoctor.getText();
+
+        int i = 0;
+        if (novi.length() != 13) {
+            umbgDoctor.getStyleClass().removeAll("ispravno");
+            umbgDoctor.getStyleClass().add("nijeIspravno");
+
+            umbg = false;
+        } else {
+            String datum = dateOfBirth.getValue().toString();
+            String spol = new String();
+
+            String dan = String.valueOf(datum.charAt(8)) + datum.charAt(9);
+            String mjesec = String.valueOf(datum.charAt(5)) + datum.charAt(6);
+            String godina = String.valueOf(datum.charAt(1)) + datum.charAt(2) + datum.charAt(3);
+            datum = dan + mjesec + godina;
+
+
+            if (!datum.equals(novi.substring(0, 7))) {
+                umbgDoctor.getStyleClass().removeAll("ispravno");
+                umbgDoctor.getStyleClass().add("nijeIspravno");
+
+            }
+
+
+
+
+            else {
+                umbgDoctor.getStyleClass().removeAll("nijeIspravno");
+                umbgDoctor.getStyleClass().add("ispravno");
+                umbg = true;
+            }
+        }
+
+
+    });
+}
+
+    public void validation(char znak){
+        int broj = 0;
+        if(znak == '1') broj += 1;
+        else if(znak == '2') broj += 2;
+        else if(znak == '3') broj += 3;
+        else if(znak == '4') broj += 4;
+        else if(znak == '5') broj += 5;
+        else if(znak == '6') broj += 6;
+        else if(znak == '7') broj += 7;
+        else if(znak == '8') broj += 8;
+        else if(znak == '9') broj += 9;
+
+
+    }
+    public boolean validationEmail(String s){
+        if(s.matches("[a-z]+[A-z0-9._]+@[a-z]+\\.+[a-z.]+")) return true;
+        return false;
+    }
+    public boolean validationPhone(String s){
+        if(s.matches("[0-9]+") && s.length() > 8) return  true;
+        return false;
     }
     public void cancel(){
-
+        Stage stage  = (Stage)nameDoctor.getScene().getWindow();
+        stage.close();
     }
+    public void ok(){
+        if(!name || !surname || !date || !address || !email || !phone || !umbg){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.show();
+        }else {
+
+            clinicDAO.addDoctor(new Doctor(nameDoctor.getText(),surnameDoctor.getText(),
+                    dateOfBirth.getValue(),umbgDoctor.getText(),addressDoctor.getText(),emailDoctor.getText(),phoneNumberDoctor.getText(),
+                    Double.valueOf(salary.getText()),username.getText(),password.getText()));
+
+            cancel();
+        }
+    }
+
+
+
 }

@@ -30,17 +30,17 @@
         <Label text="Name:" />
         <Label text="Surname:" GridPane.rowIndex="1" />
         <DatePicker fx:id="dateOfBirth" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <TextField fx:id="namePatient" GridPane.columnIndex="1" />
-        <TextField fx:id="surnamePatient" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField fx:id="nameDoctor" GridPane.columnIndex="1" />
+        <TextField fx:id="surnameDoctor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <Label text="Date of birth:" GridPane.rowIndex="2" />
         <Label text="Umbg:" GridPane.rowIndex="3" />
-        <TextField fx:id="umbgPatient" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <TextField fx:id="umbgDoctor" GridPane.columnIndex="1" GridPane.rowIndex="3" />
         <Label text="Address:" GridPane.rowIndex="4" />
-        <TextField fx:id="addressPatient" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <TextField fx:id="addressDoctor" GridPane.columnIndex="1" GridPane.rowIndex="4" />
         <Label text="Email:" GridPane.rowIndex="5" />
         <Label text="Phone number:" GridPane.rowIndex="6" />
-        <TextField fx:id="emailPatient" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-        <TextField fx:id="phoneNumberPatient" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <TextField fx:id="emailDoctor" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <TextField fx:id="phoneNumberDoctor" GridPane.columnIndex="1" GridPane.rowIndex="6" />
         <ButtonBar GridPane.columnSpan="2" GridPane.rowIndex="10">
             <buttons>
                 <Button defaultButton="true" mnemonicParsing="false" onAction="#ok" text="Ok" />
