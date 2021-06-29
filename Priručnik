@@ -1,0 +1,12 @@
+Login for doctor:
+username: doctor
+password: doctor
+
+
+Login for medical technician:
+username: medical
+password: medical
+
+Login for manager:
+username: manager
+password: manager
