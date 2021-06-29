@@ -1,0 +1,11 @@
+#addPatient,#editPatient,#deletePatient{
+    -fx-background-color: white;
+}
+#grid{
+    -fx-background-color: white;
+}
+#logout{
+    -fx-background-color: #00aafc;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}

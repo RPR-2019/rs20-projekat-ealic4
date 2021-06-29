@@ -2,6 +2,7 @@ package ba.unsa.etf.rs;
 
 import ba.unsa.etf.rs.Controllers.ClinicController;
 import ba.unsa.etf.rs.beans.Doctor;
+import ba.unsa.etf.rs.beans.Patient;
 import ba.unsa.etf.rs.dao.ClinicDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         ClinicDAO clinicDAO = new ClinicDAO();
-        for(Doctor d : clinicDAO.getDoctors()){
+        for(Patient d : clinicDAO.getPatients()){
             System.out.println(d.getName());
         }
 

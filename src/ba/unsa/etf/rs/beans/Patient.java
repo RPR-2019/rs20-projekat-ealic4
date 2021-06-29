@@ -13,6 +13,9 @@ public class Patient extends Person {
       super(name, surname, dateOfBirth, umbg, address, email, phoneNumber);
 
    }
+   public  String toString(){
+      return  getName() + " " + getSurname() + " " + getUmbg();
+   }
 
 
 

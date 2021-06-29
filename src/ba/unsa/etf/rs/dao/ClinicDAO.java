@@ -1,6 +1,7 @@
 package ba.unsa.etf.rs.dao;
 
 import ba.unsa.etf.rs.beans.*;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -14,11 +15,34 @@ import java.util.Scanner;
 public class ClinicDAO {
 
 
-    ObservableList<Doctor> doctors = FXCollections.observableArrayList();
-    ObservableList<Patient> patients = FXCollections.observableArrayList();
-    ObservableList<MedicalTechnician> medicalTechnicians = FXCollections.observableArrayList();
-    ObservableList<Manager>managers = FXCollections.observableArrayList();
-    PreparedStatement psDoctor,inDoctor,inPatient,psPatient,psMedicalTechnician,psManager;
+    private ObservableList<Doctor> doctors = FXCollections.observableArrayList();
+    private ObservableList<Patient> patients = FXCollections.observableArrayList();
+    private ObservableList<MedicalTechnician> medicalTechnicians = FXCollections.observableArrayList();
+    private ObservableList<Manager>managers = FXCollections.observableArrayList();
+
+
+    public SimpleObjectProperty<Patient> trenutniPatientProperty() {
+        return trenutniPatient;
+    }
+
+    public void setTrenutniPatient(Patient trenutniPatient) {
+        this.trenutniPatient.set(trenutniPatient);
+    }
+
+    private SimpleObjectProperty<Patient> trenutniPatient = new SimpleObjectProperty<>();
+    PreparedStatement psDoctor,inDoctor,inPatient,psPatient,psMedicalTechnician,psManager,editPatient;
+
+
+    public Patient getTrenutniPatient() {
+        return trenutniPatient.get();
+    }
+
+
+
+
+
+
+
 
 
     public ObservableList<Patient> getPatients() {
@@ -108,19 +132,6 @@ public class ClinicDAO {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void setPatients(ObservableList<Patient> patients) {
         this.patients = patients;
     }
@@ -201,9 +212,12 @@ public class ClinicDAO {
         }
 
     }
-    public void addPatient() throws SQLException {
-        for (Patient p : patients) {
-            inPatient.setInt(1, 1);
+    public void addPatient(Patient p) {
+        try {
+            inPatient = connection.prepareStatement("INSERT INTO patient(id,name,surname,date_of_birth,umbg,address,email,phone_number)values (?,?,?,?,?,?,?,?);");
+
+
+        inPatient.setInt(1, 1);
             inPatient.setString(2, p.getName());
             inPatient.setString(3, p.getSurname());
             inPatient.setString(4, String.valueOf(p.getDateOfBirth()));
@@ -213,7 +227,20 @@ public class ClinicDAO {
             inPatient.setString(8, p.getPhoneNumber());
 
             inPatient.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
+    }
+
+    public void editPatient()  {
+        try {
+            editPatient = connection.prepareStatement("select *from patient");
+            ResultSet resultSet = editPatient.executeQuery();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
     }
     private void regenerisiBazu() {
         Scanner ulaz = null;

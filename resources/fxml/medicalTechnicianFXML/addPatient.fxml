@@ -40,8 +40,8 @@
       <TextField fx:id="phoneNumberPatient" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <ButtonBar prefHeight="40.0" GridPane.columnSpan="2" GridPane.rowIndex="7">
         <buttons>
-          <Button defaultButton="true" mnemonicParsing="false" text="Ok" />
-            <Button cancelButton="true" mnemonicParsing="false" text="Cancel" />
+          <Button defaultButton="true" mnemonicParsing="false" text="Ok" onAction="#ok"/>
+            <Button cancelButton="true" mnemonicParsing="false" text="Cancel" onAction="#cancel"/>
         </buttons>
       </ButtonBar>
    </children>

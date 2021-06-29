@@ -40,6 +40,9 @@ public class Employee extends Person {
         this.salary = salary;
     }
 
-
+    public String toString(){
+        return getName() + " " + getSurname() + " " +getDateOfBirth() + " " +
+                getUmbg() + " " + getAddress() + " " + getEmail() + " " + getPhoneNumber() + " "+ getSalary();
+    }
 
 }

@@ -1,12 +1,13 @@
 package ba.unsa.etf.rs.beans;
 
-import javafx.scene.control.DateCell;
+import javafx.beans.property.Property;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.time.LocalDate;
 
 public class Person {
     private int id;
-   private String name;
+   private SimpleStringProperty name;
    private String surname;
    private LocalDate dateOfBirth;
    private String umbg;
@@ -16,9 +17,21 @@ public class Person {
 
     public Person() {}
 
+    public String getName() {
+        return name.get();
+    }
+
+    public SimpleStringProperty nameProperty() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
     public Person(String name, String surname, LocalDate dateOfBirth, String umbg, String address, String email, String phoneNumber) {
         this.id = 1;
-        this.name = name;
+        this.name = new SimpleStringProperty(name);
         this.surname = surname;
         this.dateOfBirth = dateOfBirth;
         this.umbg = umbg;
@@ -31,13 +44,7 @@ public class Person {
 
     public void setId(int id) {this.id = id;}
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getSurname() {
         return surname;
