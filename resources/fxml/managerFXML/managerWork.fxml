@@ -38,9 +38,9 @@
       </Label>
       <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
         <buttons>
-            <Button fx:id="addDoctor" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Add doctor" />
-            <Button fx:id="deleteDoctor" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Delete doctor" />
-            <Button fx:id="addTech" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Add medical technician" />
+            <Button fx:id="addDoctor" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Add doctor" onAction="#addDoctor"/>
+            <Button fx:id="deleteDoctor" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Delete doctor"/>
+            <Button fx:id="addTech" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Add medical technician" onAction="#addMedical" />
             <Button fx:id="deleteTech" mnemonicParsing="false" text="Delete medical technician" />
         </buttons>
       </ButtonBar>

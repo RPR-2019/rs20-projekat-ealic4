@@ -30,7 +30,6 @@ public class ManagerWorkController {
     listManager.setItems(clinicDAO.getManagers());
 
 
-
     }
 
 
@@ -49,6 +48,32 @@ public class ManagerWorkController {
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.show();
 
+
+    }
+    public void addDoctor() throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/managerFXML/addDoctor.fxml"));
+        AddDoctorController addDoctorController = new AddDoctorController();
+        loader.setController(addDoctorController);
+        Parent root = loader.load();
+
+        stage.setTitle("Add doctor");
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        stage.show();
+
+    }
+    public void addMedical() throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/managerFXML/addMedical.fxml"));
+        AddMedicalController addMedicalController = new AddMedicalController();
+        loader.setController(addMedicalController);
+        Parent root = loader.load();
+
+        stage.setTitle("Add medical technician");
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        stage.show();
 
     }
 }

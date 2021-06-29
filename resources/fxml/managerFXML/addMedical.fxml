@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane hgap="5.0" vgap="5.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@/css/patient.css" />
+    </stylesheets>
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" />
+        <ColumnConstraints hgrow="SOMETIMES" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Label text="Name:" />
+        <Label text="Surname:" GridPane.rowIndex="1" />
+        <DatePicker fx:id="dateOfBirth" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <TextField fx:id="namePatient" GridPane.columnIndex="1" />
+        <TextField fx:id="surnamePatient" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label text="Date of birth:" GridPane.rowIndex="2" />
+        <Label text="Umbg:" GridPane.rowIndex="3" />
+        <TextField fx:id="umbgPatient" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Address:" GridPane.rowIndex="4" />
+        <TextField fx:id="addressPatient" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <Label text="Email:" GridPane.rowIndex="5" />
+        <Label text="Phone number:" GridPane.rowIndex="6" />
+        <TextField fx:id="emailPatient" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <TextField fx:id="phoneNumberPatient" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <ButtonBar GridPane.columnSpan="2" GridPane.rowIndex="10">
+            <buttons>
+                <Button defaultButton="true" mnemonicParsing="false" onAction="#ok" text="Ok" />
+                <Button cancelButton="true" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+            </buttons>
+            <padding>
+                <Insets bottom="10.0" left="10.0" top="10.0" />
+            </padding>
+        </ButtonBar>
+        <Label text="Salary:" GridPane.rowIndex="7" />
+        <TextField fx:id="salary" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Label text="Username:" GridPane.rowIndex="8" />
+        <Label text="Password:" GridPane.rowIndex="9" />
+        <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <TextField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+    </children>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+</GridPane>
