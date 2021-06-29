@@ -32,8 +32,8 @@
         <TextField fx:id="usernameFiled" prefHeight="27.0" promptText="Enter username:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
         <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
             <buttons>
-                <Button fx:id="buttonOk" defaultButton="true" mnemonicParsing="false" prefHeight="30.0" text="Ok" />
-                <Button fx:id="cancel" cancelButton="true" mnemonicParsing="false" prefHeight="30.0" text="Cancel" />
+                <Button fx:id="buttonOk" defaultButton="true" mnemonicParsing="false" prefHeight="30.0" text="Ok" onAction="#ok"/>
+                <Button fx:id="cancel" cancelButton="true" mnemonicParsing="false" prefHeight="30.0" text="Cancel" onAction="#cancel" />
             </buttons>
         </ButtonBar>
         <ImageView fx:id="image1" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />

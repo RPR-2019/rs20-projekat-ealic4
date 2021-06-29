@@ -4,3 +4,7 @@
 .nijeIspravno{
     -fx-background-color: #ffb6c1;
 }
+#endButton{
+    -fx-background-color: #00aafc;
+    -fx-text-fill: white;
+}

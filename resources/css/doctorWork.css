@@ -1,5 +1,5 @@
 
-#submit{
+#submit,#logout{
     -fx-background-color: #00aafc;
     -fx-text-fill: white;
     -fx-font-weight: bold;

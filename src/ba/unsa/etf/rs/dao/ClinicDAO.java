@@ -1,8 +1,6 @@
 package ba.unsa.etf.rs.dao;
 
-import ba.unsa.etf.rs.beans.Disease;
-import ba.unsa.etf.rs.beans.Doctor;
-import ba.unsa.etf.rs.beans.Patient;
+import ba.unsa.etf.rs.beans.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -18,66 +16,172 @@ public class ClinicDAO {
 
     ObservableList<Doctor> doctors = FXCollections.observableArrayList();
     ObservableList<Patient> patients = FXCollections.observableArrayList();
-    PreparedStatement psDoctor,inDoctor,inPatient;
+    ObservableList<MedicalTechnician> medicalTechnicians = FXCollections.observableArrayList();
+    ObservableList<Manager>managers = FXCollections.observableArrayList();
+    PreparedStatement psDoctor,inDoctor,inPatient,psPatient,psMedicalTechnician,psManager;
+
 
     public ObservableList<Patient> getPatients() {
+        ResultSet resultSet;
+        try {
+            psPatient = connection.prepareStatement("SELECT  *FROM patient");
+            resultSet = psPatient.executeQuery();
+
+            while (resultSet.next()) {
+
+
+                String name = resultSet.getString(2);
+                String surname = resultSet.getString(3);
+                LocalDate dateOfBirth = LocalDate.parse(resultSet.getString(4));
+                String umbg = resultSet.getString(5);
+                String address = resultSet.getString(6);
+                String email = resultSet.getString(7);
+                String phoneNumber = resultSet.getString(8);
+                patients.add(new Patient(name,surname,dateOfBirth,umbg,address,email,phoneNumber));
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return patients;
     }
+
+
+    public ObservableList<MedicalTechnician> getMedicalTechnicians() {
+        ResultSet resultSet;
+        try {
+            psMedicalTechnician = connection.prepareStatement("SELECT  *FROM medicalTechnician");
+            resultSet = psMedicalTechnician.executeQuery();
+
+            while (resultSet.next()) {
+
+
+                String name = resultSet.getString(2);
+                String surname = resultSet.getString(3);
+                LocalDate dateOfBirth = LocalDate.parse(resultSet.getString(4));
+                String umbg = resultSet.getString(5);
+                String address = resultSet.getString(6);
+                String email = resultSet.getString(7);
+                String phoneNumber = resultSet.getString(8);
+                Double salary = resultSet.getDouble(9);
+                String username = resultSet.getString(10);
+                String password = resultSet.getString(11);
+                medicalTechnicians.add(new MedicalTechnician(name, surname, dateOfBirth, umbg, address, email, phoneNumber, salary, username, password));
+            }
+
+            } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return medicalTechnicians;
+    }
+    public ObservableList<Manager> getManagers() {
+        try{
+            ResultSet resultSet;
+            psManager = connection.prepareStatement("SELECT  *FROM manager");
+            resultSet = psManager.executeQuery();
+
+            while (resultSet.next()) {
+
+
+                String name = resultSet.getString(2);
+                String surname = resultSet.getString(3);
+                LocalDate dateOfBirth = LocalDate.parse(resultSet.getString(4));
+                String umbg = resultSet.getString(5);
+                String address = resultSet.getString(6);
+                String email = resultSet.getString(7);
+                String phoneNumber = resultSet.getString(8);
+                Double salary = resultSet.getDouble(9);
+                String username = resultSet.getString(10);
+                String password = resultSet.getString(11);
+                managers.add(new Manager(name, surname, dateOfBirth, umbg, address, email, phoneNumber, salary, username, password));
+        }
+
+    } catch (SQLException throwables) {
+        throwables.printStackTrace();
+    }
+        return managers;
+    }
+
+    public void setManagers(ObservableList<Manager> managers) {
+        this.managers = managers;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void setPatients(ObservableList<Patient> patients) {
         this.patients = patients;
     }
-    public ObservableList<Doctor> getDoctors() {
+
+    public ObservableList<Doctor> getDoctors() {ResultSet resultSet = null;
+        try {
+            psDoctor = connection.prepareStatement("SELECT  *FROM doctor");
+            resultSet = psDoctor.executeQuery();
+
+            while (resultSet.next()) {
+
+
+                String name = resultSet.getString(2);
+                String surname = resultSet.getString(3);
+                LocalDate dateOfBirth = LocalDate.parse(resultSet.getString(4));
+                String umbg = resultSet.getString(5);
+                String address = resultSet.getString(6);
+                String email = resultSet.getString(7);
+                String phoneNumber = resultSet.getString(8);
+                Double salary = resultSet.getDouble(9);
+                String username = resultSet.getString(10);
+                String password = resultSet.getString(11);
+                doctors.add(new Doctor(name,surname,dateOfBirth,umbg,address,email,phoneNumber,salary,username,password));
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
         return doctors;
     }
+
     public void setDoctors(ObservableList<Doctor> doctors) {
         this.doctors = doctors;
     }
-    String url = "jdbc:sqlite:baza.db";
-    Connection connection;
-    public static ClinicDAO instance = null;
 
-    public static ClinicDAO getInstance() throws SQLException {
 
-                 if(instance == null) new ClinicDAO();
 
-                    return instance;
+    public void setMedicalTechnicians(ObservableList<MedicalTechnician> medicalTechnicians) {
+        this.medicalTechnicians = medicalTechnicians;
     }
 
 
 
-
+    String url = "jdbc:sqlite:baza.db";
+    Connection connection;
     public ClinicDAO() {
 
         try {
             connection = DriverManager.getConnection(url);
             vratiNaDefault();
             regenerisiBazu();
-            inDoctor = connection.prepareStatement("INSERT INTO doctor(id,name,surname,date_of_birth,umbg,address,email,phone_number,salary,username,password)values(?,?,?,?,?,?,?,?,?,?,?)");
-            psDoctor = connection.prepareStatement("SELECT *FROM doctor");
-            inPatient = connection.prepareStatement("INSERT INTO patient(id,name,surname,date_of_birth,umbg,address,email,phone_number)values(?,?,?,?,?,?,?,?)");
-            napuni();
-
 
         } catch (
                 SQLException throwables) {
             throwables.printStackTrace();
         }
     }
-    void napuni() throws SQLException {
-        doctors.add(new Doctor("Nikola","Tesla", LocalDate.of(1960, 06, 12),"1206960499152","Brazilska 1","nikolatesla@gmail.com","033/123-456",2000,"ntesla","tesla"));
-        doctors.add(new Doctor("Albert","Einstein",LocalDate.of(1955, 12, 14),"1412955300561","Bosanska 21","alberteinstein@gmail.com","033/234-890",3000,"aeinstein","einstein"));
-        addDoctor();
 
 
-        Disease disease = new Disease("Reumatoidni artritis");
-        ArrayList<Disease> diseases = new ArrayList<>();
-        diseases.add(disease);
-
-
-        patients.add(new Patient("Jasmina","Alic",LocalDate.of(1973,05,21),"2106973600153","Alici bb","jasminaalic21@gmail.com","061-123-456",diseases));
-        addPatient();
-    }
 
     public void addDoctor() throws SQLException {
         for(Doctor d: doctors) {
@@ -137,6 +241,9 @@ public class ClinicDAO {
         Statement stmt = connection.createStatement();
         try {
             stmt.executeUpdate("DELETE FROM doctor");
+            stmt.executeUpdate("DELETE FROM patient");
+            stmt.executeUpdate("DELETE FROM manager");
+            stmt.executeUpdate("DELETE FROM medicalTechnician");
         }catch (Exception e){
 
         }

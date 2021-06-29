@@ -1,0 +1,10 @@
+#addDoctor,#addTech,#logout{
+    -fx-background-color: #00aafc;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+#deleteTech,#deleteDoctor{
+    -fx-background-color: #ff4800;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}

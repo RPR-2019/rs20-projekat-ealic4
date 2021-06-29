@@ -71,4 +71,17 @@ public class DoctorWorkController {
         if(s.matches("[0-9]+") && s.length() == 13) return true;
         return false;
     }
+    public void logout() throws IOException {
+        cancel();
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
+        ClinicController clinicController = new ClinicController();
+        loader.setController(clinicController);
+        Parent root = loader.load();
+        stage.setTitle("Home");
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.show();
+
+
+    }
 }

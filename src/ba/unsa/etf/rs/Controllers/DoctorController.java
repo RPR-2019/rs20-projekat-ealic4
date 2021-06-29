@@ -35,7 +35,7 @@ public class DoctorController {
     public void initialize() {
         usernameFiled.textProperty().addListener(
                 (obs, old, novi) -> {
-            if (usernameFiled.getText().length() < 6) {
+            if (usernameFiled.getText().isEmpty()) {
                 usernameFiled.getStyleClass().removeAll("ispravno");
                 usernameFiled.getStyleClass().add("nijeIspravno");
                 Image image = new Image("/img/not.png");
